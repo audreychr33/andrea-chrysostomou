@@ -1,67 +1,171 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Andrea Chrysostomou</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #000;
-  color: white;
-  text-align: center;
-  padding: 40px;
-.logo {
-  width: 200px;
-  max-width: 60%;
-  height: auto;
-  margin-bottom: 30px;
-}
-button {
-  width: 250px;
-  padding: 15px;
-  margin: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.primary {
-  background-color: #1e90ff;
-  color: white;
-}
-.secondary {
-  background-color: white;
-  color: black;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Andrea Chrysostomou</title>
+
+  <style>
+    :root{
+      --bg0:#000000;
+      --bg1:#070b14;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --blue1:#1e90ff;
+      --blue2:#0066ff;
+      --radius:18px;
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      text-align:center;
+
+      background:
+        radial-gradient(900px 380px at 50% 0%, rgba(30,144,255,0.20), transparent 55%),
+        radial-gradient(900px 520px at 50% 100%, rgba(0,102,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 16px;
+    }
+
+    .card{
+      width:min(720px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 34px 22px 28px;
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(520px 280px at 50% -20%, rgba(30,144,255,0.22), transparent 60%);
+      pointer-events:none;
+    }
+
+    .logo{
+      width: 240px;
+      max-width: 70%;
+      height: auto;
+      margin: 4px auto 16px;
+      display:block;
+      filter: drop-shadow(0 10px 28px rgba(0,0,0,0.55));
+    }
+
+    h1{
+      margin: 0;
+      font-size: clamp(26px, 3.2vw, 38px);
+      letter-spacing: 0.4px;
+      position:relative;
+    }
+
+    .meta{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.35;
+      position:relative;
+    }
+
+    .meta strong{
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .grid{
+      margin: 22px auto 0;
+      width: min(640px, 100%);
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      position:relative;
+    }
+
+    @media (min-width: 720px){
+      .grid{ grid-template-columns: repeat(4, minmax(0,1fr)); }
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.14);
+      text-decoration:none;
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      transition: transform .14s ease, background .14s ease, border-color .14s ease, box-shadow .14s ease;
+      user-select:none;
+      min-height: 52px;
+      font-weight: 650;
+      letter-spacing: 0.2px;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.20);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    }
+    .btn:active{ transform: translateY(0px) scale(0.99); }
+
+    .primary{
+      background: linear-gradient(90deg, var(--blue1), var(--blue2));
+      border-color: rgba(30,144,255,0.35);
+      color: white;
+      box-shadow: 0 14px 34px rgba(0,102,255,0.22);
+    }
+    .primary:hover{
+      background: linear-gradient(90deg, #2aa0ff, #0a72ff);
+      border-color: rgba(30,144,255,0.55);
+      box-shadow: 0 18px 44px rgba(0,102,255,0.28);
+    }
+
+    .full{ grid-column: 1 / -1; }
+
+    /* Μικρή βελτίωση για πολύ μικρές οθόνες */
+    @media (max-width: 360px){
+      .btn{ font-size: 15px; }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="card">
+    <img src="logo.png" class="logo" alt="AX Gaia Intelligence logo" />
 
-<img src="logo.png" class="logo">
+    <h1>Andrea Chrysostomou</h1>
+    <div class="meta">
+      <strong>Founder &amp; Director</strong><br/>
+      AX Gaia Intelligence
+    </div>
 
-<h2>Andrea Chrysostomou</h2>
-<p>Founder & Director<br>AX Gaia Intelligence</p>
+    <section class="grid" aria-label="Contact actions">
+      <a class="btn primary full" href="andrea-chrysostomou.vcf">💾 Save Contact</a>
 
-<a href="andrea-chrysostomou.vcf">
-<button class="primary">Save Contact</button>
-</a>
-
-<a href="tel:+35799836316">
-<button class="secondary">Call</button>
-</a>
-
-<a href="mailto:gaia.intelligence@outlook.com">
-<button class="secondary">Email</button>
-</a>
-
-<a href="https://www.linkedin.com/in/andrea-chrysostomou-b24b233b">
-<button class="secondary">LinkedIn</button>
-</a>
-
-<a href="https://linkedin.com/company/ax-gaia-intelligence">
-<button class="secondary">Company</button>
-</a>
-
+      <a class="btn" href="tel:+35799836316">📞 Call</a>
+      <a class="btn" href="mailto:gaia.intelligence@outlook.com">✉️ Email</a>
+      <a class="btn" href="https://www.linkedin.com/in/andrea-chrysostomou-b24b233b" target="_blank" rel="noopener">in LinkedIn</a>
+      <a class="btn" href="https://linkedin.com/company/ax-gaia-intelligence" target="_blank" rel="noopener">🏢 Company</a>
+    </section>
+  </main>
 </body>
 </html>
